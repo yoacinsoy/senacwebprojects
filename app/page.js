@@ -1,25 +1,59 @@
 import Image from "next/image";
 import Link from "next/link";
+
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen bg-[#D9D9D9] p-8 pb-20 gap-16 sm:p-20">
-      <h1 className="font-bold text-black text-2xl sm:text-4xl">
-        Sistema de Cadastro
-      </h1>
-      <section className="grid grid-cols-1">
-        <Link href="/produtos" className="flex flex-col h-15 mb-5 rounded-3xl cursor-pointer items-center justify-center bg-gradient-to-r from-[#570000] to-[#CC0707] items-center">
-          <h1 className="font-bold text-white text-lg sm:text-xl">CADASTRO DE PRODUTOS</h1>
-          <p className="text-white">Nome, preço, categoria e mais</p>
-        </Link>
-        <Link href="/clientes" className="flex flex-col h-15 mb-5 rounded-3xl cursor-pointer items-center justify-center bg-gradient-to-r from-[#570000] to-[#CC0707] items-center">
-          <h1 className="font-bold text-white text-lg sm:text-xl">CADASTRO DE CLIENTES</h1>
-          <p className="text-white">Nome, email, telefone e mais</p>
-        </Link>
-        <Link href="/fornecedores" className="flex flex-col h-15 mb-5 rounded-3xl cursor-pointer items-center justify-center bg-gradient-to-r from-[#570000] to-[#CC0707] items-center">
-          <h1 className="font-bold text-white pl-2 pr-2 text-sm sm:text-xl">CADASTRO DE FORNECEDORES</h1>
-          <p className="text-white">Nome, email, telefone e mais</p>
-        </Link>
-      </section>
+    <div className="flex min-h-screen">
+      <div className="w-64 bg-gray-200 flex flex-col items-center p-8 gap-8">
+        <Image
+          src="/senac.png"
+          alt="Logo Senac"
+          width={150}
+          height={150}
+          className="object-contain"
+        />
+
+        <nav className="flex flex-col gap-4 w-full">
+          <Link
+            href="/imc"
+            className="text-blue-600 hover:text-blue-800 hover:underline text-center"
+          >
+            App de IMC
+          </Link>
+          <Link
+            href="/idade"
+            className="text-blue-600 hover:text-blue-800 hover:underline text-center"
+          >
+            App Idade Aluno
+          </Link>
+          <Link
+            href="/ficha"
+            className="text-blue-600 hover:text-blue-800 hover:underline text-center"
+          >
+            App CRUD
+          </Link>
+          <Link
+            href="/abc"
+            className="text-blue-600 hover:text-blue-800 hover:underline text-center"
+          >
+            App Soma
+          </Link>
+          <Link
+            href="/ficha"
+            className="text-blue-600 hover:text-blue-800 hover:underline text-center"
+          >
+            App Ficha do Aluno
+          </Link>
+        </nav>
+      </div>
+
+      <div className="flex-1 flex flex-col items-center justify-center p-8 bg-gray-800 text-orange-400">
+        <h1 className="text-4xl font-bold mb-4">Bem-Vindo!</h1>
+        <h2 className="text-2xl mb-2 text-white">
+          Aplicativos Web do Curso Senac 2026
+        </h2>
+        <h3 className="text-xl text-white">Turma 027</h3>
+      </div>
     </div>
   );
 }
