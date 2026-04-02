@@ -8,15 +8,29 @@ export default function CRUD() {
   const [idade, setIdade] = useState("");
   const [telefone, setTelefone] = useState("");
   const [cidade, setCidade] = useState("");
+  const [alunos, setAlunos] = useState([]);
 
-  function limparCampos() {
+  const limparCampos = () => {
     setNome("");
     setEmail("");
     setIdade("");
     setTelefone("");
     setCidade("");
-  }
+  };
 
+  const cadastrarAluno = () => {
+    if (!nome || !email || !idade || !telefone || !cidade) {
+      alert("Preencha todos os campos!");
+      return;
+    }
+    const novoAluno = { nome, email, idade, telefone, cidade };
+    limparCampos();
+    alert("Aluno cadastrado com sucesso!");
+
+    const novaLista = alunos.slice();
+    novaLista.push({ nome, email, idade, telefone, cidade });
+    setAlunos(novaLista);
+  };
   return (
     <div className="font-sans flex min-h-screen bg-gray-800">
       <Sidebar />
@@ -63,53 +77,45 @@ export default function CRUD() {
             />
             <button
               className="bg-blue-500 hover:bg-blue-600 text-white font-bold text-lg p-3 rounded w-full"
-              onClick={limparCampos}
+              onClick={cadastrarAluno}
             >
               Cadastrar
             </button>
           </div>
         </div>
 
-        {/* Tabela de Alunos */}
-        <div className="w-full max-w-4xl bg-gray-200 rounded-lg shadow-lg p-6">
-          <h2 className="text-black font-bold mb-4 text-lg">
-            Alunos Cadastrados
-          </h2>
-          <table className="w-full text-left">
-            <thead>
-              <tr className="border-b-2 border-gray-600">
-                <th className="py-2 px-4 text-black font-bold">Nome</th>
-                <th className="py-2 px-4 text-black font-bold">Email</th>
-                <th className="py-2 px-4 text-black font-bold">Idade</th>
-                <th className="py-2 px-4 text-black font-bold">Telefone</th>
-                <th className="py-2 px-4 text-black font-bold">Cidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-b border-gray-700 hover:bg-gray-800">
-                <td className="py-3 px-4 text-black">João Silva</td>
-                <td className="py-3 px-4 text-black">joao@email.com</td>
-                <td className="py-3 px-4 text-black">25</td>
-                <td className="py-3 px-4 text-black">(11) 99999-1234</td>
-                <td className="py-3 px-4 text-black">São Paulo</td>
-              </tr>
-              <tr className="border-b border-gray-700 hover:bg-gray-800">
-                <td className="py-3 px-4 text-black">Maria Santos</td>
-                <td className="py-3 px-4 text-black">maria@email.com</td>
-                <td className="py-3 px-4 text-black">30</td>
-                <td className="py-3 px-4 text-black">(21) 98888-5678</td>
-                <td className="py-3 px-4 text-black">Rio de Janeiro</td>
-              </tr>
-              <tr className="border-b border-gray-700 hover:bg-gray-800">
-                <td className="py-3 px-4 text-black">Pedro Oliveira</td>
-                <td className="py-3 px-4 text-black">pedro@email.com</td>
-                <td className="py-3 px-4 text-black">28</td>
-                <td className="py-3 px-4 text-black">(31) 97777-9012</td>
-                <td className="py-3 px-4 text-black">Belo Horizonte</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {alunos.length > 0 && (
+          <div className="w-full max-w-4xl bg-gray-200 rounded-lg shadow-lg p-6">
+            <h2 className="text-black font-bold mb-4 text-lg">
+              Alunos Cadastrados
+            </h2>
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b-2 border-gray-600">
+                  <th className="py-2 px-4 text-black font-bold">Nome</th>
+                  <th className="py-2 px-4 text-black font-bold">Email</th>
+                  <th className="py-2 px-4 text-black font-bold">Idade</th>
+                  <th className="py-2 px-4 text-black font-bold">Telefone</th>
+                  <th className="py-2 px-4 text-black font-bold">Cidade</th>
+                </tr>
+              </thead>
+              <tbody>
+                {alunos.map((aluno, index) => (
+                  <tr
+                    key={index}
+                    className="border-b border-gray-700 hover:bg-gray-800"
+                  >
+                    <td className="py-3 px-4 text-black">{aluno.nome}</td>
+                    <td className="py-3 px-4 text-black">{aluno.email}</td>
+                    <td className="py-3 px-4 text-black">{aluno.idade}</td>
+                    <td className="py-3 px-4 text-black">{aluno.telefone}</td>
+                    <td className="py-3 px-4 text-black">{aluno.cidade}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
     </div>
   );
