@@ -1,51 +1,9 @@
-import Image from "next/image";
-import Link from "next/link";
+import Sidebar from "./components/Sidebar";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen">
-      <div className="w-64 bg-gray-200 flex flex-col items-center p-8 gap-8">
-        <Image
-          src="/senac.png"
-          alt="Logo Senac"
-          width={150}
-          height={150}
-          className="object-contain"
-        />
-
-        <nav className="flex flex-col gap-4 w-full">
-          <Link
-            href="/imc"
-            className="text-blue-600 hover:text-blue-800 hover:underline text-justify"
-          >
-            App de IMC
-          </Link>
-          <Link
-            href="/idade"
-            className="text-blue-600 hover:text-blue-800 hover:underline text-justify"
-          >
-            App Idade Aluno
-          </Link>
-          <Link
-            href="/ficha"
-            className="text-blue-600 hover:text-blue-800 hover:underline text-justify"
-          >
-            App CRUD
-          </Link>
-          <Link
-            href="/abc"
-            className="text-blue-600 hover:text-blue-800 hover:underline text-justify"
-          >
-            App Soma
-          </Link>
-          <Link
-            href="/ficha"
-            className="text-blue-600 hover:text-blue-800 hover:underline text-justify"
-          >
-            App Ficha do Aluno
-          </Link>
-        </nav>
-      </div>
+      <Sidebar />
 
       <div className="flex-1 flex flex-col items-center justify-center p-8 bg-gray-800 text-orange-400">
         <h1 className="text-4xl font-bold mb-4">Bem-Vindo!</h1>
