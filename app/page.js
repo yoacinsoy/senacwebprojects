@@ -1,8 +1,11 @@
+"use client";
 import Sidebar from "./components/Sidebar";
-
+import { use, useState } from "react";
 export default function Home() {
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
   return (
-    <div className="relative min-h-screen flex text-white font-sans overflow-hidden">
+    <div className="relative min-h-screen flex text-white font-sans overflow-hidden items-center justify-center">
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
         style={{
@@ -10,26 +13,32 @@ export default function Home() {
           filter: "brightness(0.2)",
         }}
       ></div>
-
-      <div className="relative z-10 flex w-full">
-        <Sidebar />
-
-        <main className="flex-1 flex flex-col items-center justify-center p-8 text-center">
-          <section className="space-y-4 animate-fade-in">
-            <h1 className="text-5xl md:text-6xl font-extrabold tracking-tight">
-              Bem-Vindo!
-            </h1>
-
-            <div className="space-y-2">
-              <h2 className="text-2xl md:text-3xl font-medium text-gray-200">
-                Aplicativos Web do Curso Senac 2026
-              </h2>
-              <p className="text-lg md:text-xl text-orange-400 font-semibold tracking-wide uppercase">
-                Turma 027
-              </p>
-            </div>
-          </section>
-        </main>
+      <div className="bg-white flex flex-col items-center justify-center p-8 gap-4 rounded shadow-lg relative z-10">
+        <h1 className="font-bold text-zinc-600 text-2xl">Acessar Plataforma</h1>
+        <form className="grid grid-cols-1 gap-4">
+          <div className="grid gap-1">
+            <label className="font-bold text-zinc-700 text-xl">Usuário</label>
+            <input
+              type="text"
+              placeholder="Ex: admin"
+              className="border border-gray-300 rounded py-2 text-black px-4 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            />
+          </div>
+          <div className="grid gap-1">
+            <label className="font-bold text-zinc-700 text-xl">Senha</label>
+            <input
+              type="password"
+              placeholder="Ex: 123456"
+              className="border border-gray-300 rounded py-2 text-black px-4 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            />
+          </div>
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-500"
+          >
+            Entrar
+          </button>
+        </form>
       </div>
     </div>
   );

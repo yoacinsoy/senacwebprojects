@@ -14,10 +14,10 @@ export default function Sidebar() {
 
       <nav className="flex flex-col gap-4 w-full">
         <Link
-          href="/"
-          className="text-white hover:text-blue-400 hover:underline text-justify font-bold"
+          href="/pageinicial"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
         >
-          Principal
+          Bem Vindo
         </Link>
         <Link
           href="/imc"
