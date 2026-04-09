@@ -49,6 +49,12 @@ export default function Sidebar() {
         >
           App Ficha do Aluno
         </Link>
+        <Link
+          href="/serveraction"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
+        >
+          Server Action
+        </Link>
       </nav>
     </div>
   );
