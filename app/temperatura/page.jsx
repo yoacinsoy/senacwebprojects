@@ -1,14 +1,16 @@
 "use client";
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import { converterTemperatura } from "@/actions/calculadora/conversor";
 
 export default function Temperatura() {
     const [valor, setValor] = useState("");
     const [resultado, setResultado] = useState(null);
     const [tipoOrigem, setTipoOrigem] = useState("celsius");
     const [erro, setErro] = useState("");
+    const [loading, setLoading] = useState(false);
 
-    function converterTemperatura() {
+    async function converter() {
         const valorNumerico = parseFloat(valor);
 
         if (isNaN(valorNumerico)) {
@@ -17,23 +19,23 @@ export default function Temperatura() {
             return;
         }
 
+        setLoading(true);
         setErro("");
-        let resultadoConvertido;
 
-        if (tipoOrigem === "celsius") {
-            resultadoConvertido = (valorNumerico * 9 / 5) + 32;
-            setResultado({
-                valor: resultadoConvertido.toFixed(2),
-                tipo: "fahrenheit",
-                simbolo: "°F"
-            });
-        } else {
-            resultadoConvertido = (valorNumerico - 32) * 5 / 9;
-            setResultado({
-                valor: resultadoConvertido.toFixed(2),
-                tipo: "celsius",
-                simbolo: "°C"
-            });
+        try {
+            const res = await converterTemperatura(valorNumerico, tipoOrigem);
+
+            if (res.erro) {
+                setErro(res.erro);
+                setResultado(null);
+            } else {
+                setResultado(res);
+            }
+        } catch (e) {
+            setErro("Erro ao converter temperatura");
+            setResultado(null);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -41,11 +43,6 @@ export default function Temperatura() {
         setValor("");
         setResultado(null);
         setErro("");
-    }
-
-    function inverterTipo() {
-        setTipoOrigem(tipoOrigem === "celsius" ? "fahrenheit" : "celsius");
-        setResultado(null);
     }
 
     return (
@@ -66,8 +63,8 @@ export default function Temperatura() {
                         <div className="space-y-4 w-full">
                             <div className="flex gap-2 mb-4">
                                 <button
-                                    onClick={() => setTipoOrigem("celsius")}
-                                    className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all cursor-pointer ${tipoOrigem === "celsius"
+                                    onClick={() => { setTipoOrigem("celsius"); setResultado(null); }}
+                                    className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${tipoOrigem === "celsius"
                                         ? "bg-orange-500 text-white"
                                         : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
                                         }`}
@@ -75,8 +72,8 @@ export default function Temperatura() {
                                     °C → °F
                                 </button>
                                 <button
-                                    onClick={() => setTipoOrigem("fahrenheit")}
-                                    className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all cursor-pointer ${tipoOrigem === "fahrenheit"
+                                    onClick={() => { setTipoOrigem("fahrenheit"); setResultado(null); }}
+                                    className={`flex-1 py-3 px-4 rounded-xl font-medium transition-all ${tipoOrigem === "fahrenheit"
                                         ? "bg-orange-500 text-white"
                                         : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
                                         }`}
@@ -100,14 +97,15 @@ export default function Temperatura() {
 
                             <div className="grid grid-cols-2 gap-3">
                                 <button
-                                    onClick={converterTemperatura}
-                                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                                    onClick={converter}
+                                    disabled={loading}
+                                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-bold py-4 px-4 rounded-xl transition-all duration-300 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    Converter
+                                    {loading ? "Convertendo..." : "Converter"}
                                 </button>
                                 <button
                                     onClick={limpar}
-                                    className="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-4 px-4 rounded-xl transition-all cursor-pointer"
+                                    className="bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-4 px-4 rounded-xl transition-all"
                                 >
                                     Limpar
                                 </button>
@@ -125,14 +123,14 @@ export default function Temperatura() {
                                         {tipoOrigem === "celsius" ? "Fahrenheit" : "Celsius"}
                                     </p>
                                     <p className="text-4xl font-bold text-orange-500 mt-1">
-                                        {resultado.valor}{resultado.simbolo}
+                                        {resultado.resultado}{resultado.simbolo}
                                     </p>
                                 </div>
                             )}
 
                             <div className="mt-4 p-4 bg-zinc-900/30 border border-zinc-800 rounded-xl">
                                 <p className="text-zinc-500 text-xs text-center">
-                                    Fórmulas: °F = °C × 9/5 + 32 | °C = (°F - 32) × 5/9
+                                    Conversão realizada no servidor
                                 </p>
                             </div>
                         </div>
