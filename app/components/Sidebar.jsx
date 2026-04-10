@@ -66,13 +66,23 @@ export default function Sidebar() {
                 </Link>
 
                 <Link
-                    href="/calculadora"
+                    href="/baskara"
                     className="group flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-900 transition-all duration-300"
                 >
                     <svg className="w-5 h-5 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01" />
                     </svg>
-                    <span className="font-medium">Operações</span>
+                    <span className="font-medium">Bhaskara</span>
+                </Link>
+
+                <Link
+                    href="/temperatura"
+                    className="group flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-900 transition-all duration-300"
+                >
+                    <svg className="w-5 h-5 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3v2m6-2v2M9 19v2m6-2v2M5 21V10.87a1 1 0 00-.41-1l-3.58-.64A1 1 0 001.18 9H2a1 1 0 00-1 1v9a1 1 0 001 1h3a1 1 0 001-1v-2m0-7.13V3.87a1 1 0 00-.41-1l-3.58-.64A1 1 0 001.18 1H2a1 1 0 00-1 1v11a1 1 0 001 1h3a1 1 0 001-1z" />
+                    </svg>
+                    <span className="font-medium">Temperatura</span>
                 </Link>
 
                 <Link
