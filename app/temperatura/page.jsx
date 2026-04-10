@@ -58,7 +58,7 @@ export default function Temperatura() {
                         </div>
 
                         <h1 className="text-2xl font-bold text-white mb-2">Conversor de Temperatura</h1>
-                        <p className="text-zinc-500 text-sm mb-6">Converta °C ↔ °F</p>
+                        <p className="text-zinc-500 text-sm mb-6">Converta °C para °F</p>
 
                         <div className="space-y-4 w-full">
                             <div className="flex gap-2 mb-4">
