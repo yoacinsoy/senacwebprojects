@@ -2,6 +2,7 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import { converterTemperatura } from "@/actions/calculadora/conversor";
+import { toast } from "sonner";
 
 export default function Temperatura() {
     const [valor, setValor] = useState("");
@@ -14,7 +15,7 @@ export default function Temperatura() {
         const valorNumerico = parseFloat(valor);
 
         if (isNaN(valorNumerico)) {
-            setErro("Por favor, insira um valor numérico válido");
+            setErro("Por favor, insira um numero valido");
             setResultado(null);
             return;
         }
@@ -22,21 +23,33 @@ export default function Temperatura() {
         setLoading(true);
         setErro("");
 
-        try {
-            const res = await converterTemperatura(valorNumerico, tipoOrigem);
-
-            if (res.erro) {
-                setErro(res.erro);
-                setResultado(null);
-            } else {
-                setResultado(res);
+        toast.promise(
+            (async () => {
+                const res = await converterTemperatura(valorNumerico, tipoOrigem);
+                if (res.erro) {
+                    throw new Error(res.erro);
+                }
+                return res;
+            })(),
+            {
+                loading: "Convertendo...",
+                success: (res) => {
+                    setResultado(res);
+                    return `${res.resultado}${res.simbolo}`;
+                },
+                error: (err) => {
+                    setErro(err.message);
+                    setResultado(null);
+                    return err.message;
+                },
+                position: "bottom-right",
             }
-        } catch (e) {
-            setErro("Erro ao converter temperatura");
-            setResultado(null);
-        } finally {
+        );
+
+        // Timeout para resetar loading (o toast.promise gerencia a UI)
+        setTimeout(() => {
             setLoading(false);
-        }
+        }, 1000);
     }
 
     function limpar() {

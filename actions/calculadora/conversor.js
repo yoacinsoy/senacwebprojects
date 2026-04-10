@@ -22,7 +22,7 @@ export async function converterFahrenheitParaCelsius(fahrenheit) {
     const valor = parseFloat(fahrenheit);
 
     if (isNaN(valor)) {
-        return { erro: "Por favor, insira um valor numérico válido", resultado: null };
+        return { erro: "Por favor, insira um numero valido", resultado: null };
     }
 
     const resultado = (valor - 32) * 5 / 9;
