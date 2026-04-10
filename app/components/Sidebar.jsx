@@ -14,10 +14,9 @@ export default function Sidebar() {
                 />
             </div>
 
-<<<<<<< HEAD
             <nav className="flex flex-col gap-2 w-full">
                 <Link
-                    href="/pageinicial"
+                    href="/serveraction"
                     className="group flex items-center gap-3 px-4 py-3 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-900 transition-all duration-300"
                 >
                     <svg className="w-5 h-5 group-hover:text-orange-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -105,52 +104,4 @@ export default function Sidebar() {
             </div>
         </div>
     );
-=======
-      <nav className="flex flex-col gap-4 w-full">
-        <Link
-          href="/pageinicial"
-          className="text-white hover:text-blue-400 hover:underline text-justify"
-        >
-          Bem Vindo
-        </Link>
-        <Link
-          href="/imc"
-          className="text-white hover:text-blue-400 hover:underline text-justify"
-        >
-          App de IMC
-        </Link>
-        <Link
-          href="/idade"
-          className="text-white hover:text-blue-400 hover:underline text-justify"
-        >
-          App Idade Aluno
-        </Link>
-        <Link
-          href="/crud"
-          className="text-white hover:text-blue-400 hover:underline text-justify"
-        >
-          App CRUD
-        </Link>
-        <Link
-          href="/abc"
-          className="text-white hover:text-blue-400 hover:underline text-justify"
-        >
-          App Soma
-        </Link>
-        <Link
-          href="/ficha"
-          className="text-white hover:text-blue-400 hover:underline text-justify"
-        >
-          App Ficha do Aluno
-        </Link>
-        <Link
-          href="/serveraction"
-          className="text-white hover:text-blue-400 hover:underline text-justify"
-        >
-          Server Action
-        </Link>
-      </nav>
-    </div>
-  );
->>>>>>> 01d54159c8100a915e50195393afd3eb67bfec68
 }

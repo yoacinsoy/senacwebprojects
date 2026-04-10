@@ -1,7 +1,9 @@
 "use client";
-<<<<<<< HEAD
+
 import { chamaServidor } from "@/actions/servidor";
 import Image from "next/image";
+import Link from "next/link";
+
 export default function ServerAction() {
 
     const serverAction = async () => {
@@ -58,14 +60,14 @@ export default function ServerAction() {
                         </span>
                     </button>
 
-                    <button className="group bg-white text-zinc-900 py-4 px-6 rounded-xl text-base font-semibold hover:bg-zinc-100 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
+                    <Link href="/dashboard" className="group bg-white text-zinc-900 py-4 px-6 rounded-xl text-base font-semibold hover:bg-zinc-100 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] cursor-pointer">
                         <span className="flex items-center justify-center gap-3">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a２ ２ ０ ０１－２ －２ｖ－２ｚ" />
                             </svg>
                             Dashboard
                         </span>
-                    </button>
+                    </Link>
                 </div>
             </div>
 
@@ -75,65 +77,4 @@ export default function ServerAction() {
             </div>
         </div>
     );
-=======
-import { useState } from "react";
-import Link from "next/link";
-import { servidor } from "/actions/servidor";
-export default function Page() {
-  let contador = 0;
-  async function ChamaServidor() {
-    try {
-      await servidor();
-      console.log("Chamou o Servidor");
-    } catch {
-      console.log("Erro ao tentar logar");
-    } finally {
-      console.log("Login Terminou");
-    }
-  }
-  async function Cliente(e) {
-    e.preventDefault();
-    try {
-      console.clear();
-      console.log("\n\n");
-      console.log("Console limpo e ação executada no FrontEnd");
-      console.log("Estou no Cliente....:" + contador++);
-      console.log("Só funciona no Front-End meu amigo....");
-      console.log("\n\n");
-    } catch {
-      console.log("Erro ao tentar logar 2");
-    } finally {
-      console.log("Fim de execução da Action no Front End");
-    }
-  }
-  return (
-    <div className="bg-black min-h-screen min-w-screen flex items-center justify-center">
-      <div className="flex flex-col h-80 w-100 rounded-lg border-4 border-green-400 bg-white items-center justify-center gap-4">
-        <h1 className="text-2xl font-bold text-black flex items-center justify-center">
-          Server Action
-        </h1>
-        <button
-          onClick={ChamaServidor}
-          type="button"
-          className="bg-green-500 hover:bg-green-800 w-80 text-lg p-2 font-bold rounded"
-        >
-          Ações no Servidor (Back-END)
-        </button>
-        <button
-          onClick={Cliente}
-          type="button"
-          className="bg-red-500 hover:bg-red-800 w-80 text-lg p-2 font-bold rounded"
-        >
-          Ações no Cliente (Front-END)
-        </button>
-        <Link
-          href="/pageinicial"
-          className="bg-gray-300 text-gray-800 border border-black w-80 text-xl p-2 rounded"
-        >
-          Dashboard
-        </Link>
-      </div>
-    </div>
-  );
->>>>>>> 01d54159c8100a915e50195393afd3eb67bfec68
 }
