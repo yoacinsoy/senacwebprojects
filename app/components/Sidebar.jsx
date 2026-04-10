@@ -14,6 +14,7 @@ export default function Sidebar() {
                 />
             </div>
 
+<<<<<<< HEAD
             <nav className="flex flex-col gap-2 w-full">
                 <Link
                     href="/pageinicial"
@@ -104,4 +105,52 @@ export default function Sidebar() {
             </div>
         </div>
     );
+=======
+      <nav className="flex flex-col gap-4 w-full">
+        <Link
+          href="/pageinicial"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
+        >
+          Bem Vindo
+        </Link>
+        <Link
+          href="/imc"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
+        >
+          App de IMC
+        </Link>
+        <Link
+          href="/idade"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
+        >
+          App Idade Aluno
+        </Link>
+        <Link
+          href="/crud"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
+        >
+          App CRUD
+        </Link>
+        <Link
+          href="/abc"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
+        >
+          App Soma
+        </Link>
+        <Link
+          href="/ficha"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
+        >
+          App Ficha do Aluno
+        </Link>
+        <Link
+          href="/serveraction"
+          className="text-white hover:text-blue-400 hover:underline text-justify"
+        >
+          Server Action
+        </Link>
+      </nav>
+    </div>
+  );
+>>>>>>> 01d54159c8100a915e50195393afd3eb67bfec68
 }
