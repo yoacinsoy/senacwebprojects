@@ -127,12 +127,6 @@ export default function Temperatura() {
                                     </p>
                                 </div>
                             )}
-
-                            <div className="mt-4 p-4 bg-zinc-900/30 border border-zinc-800 rounded-xl">
-                                <p className="text-zinc-500 text-xs text-center">
-                                    Conversão realizada no servidor
-                                </p>
-                            </div>
                         </div>
                     </div>
                 </div>
